@@ -12,7 +12,7 @@ const SignedInLinks = ({ signOut }) => {
         <Link to="/create-blog">CREATE</Link>
       </Menu.Item>
       <Menu.Item>
-        <Link to="/" onClick={() => signOut}>
+        <Link to="" onClick={signOut}>
           LOGOUT
         </Link>
       </Menu.Item>

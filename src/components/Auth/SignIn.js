@@ -22,7 +22,6 @@ class SignIn extends Component {
 
   submit = event => {
     this.props.signIn(this.state.credentials);
-    console.log(this.state.credentials);
   };
 
   render() {
