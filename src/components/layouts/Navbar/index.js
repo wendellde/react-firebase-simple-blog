@@ -6,22 +6,22 @@ import SignedOutLinks from "./SignedOutLinks";
 
 import { connect } from "react-redux";
 
-const Navbar = ({ auth }) => (
-  <div>
-    <Menu pointing secondary>
-      <Menu.Item>
-        <Link to="/">HOME</Link>
-      </Menu.Item>
-      <Menu.Item>
-        <Link to="/blogs">BLOGS</Link>
-      </Menu.Item>
-      <Menu.Menu position="right">
-        <SignedInLinks />
-        <SignedOutLinks />
-      </Menu.Menu>
-    </Menu>
-  </div>
-);
+const Navbar = ({ auth }) => {
+  const links = auth.uid ? <SignedInLinks /> : <SignedOutLinks />;
+  return (
+    <div>
+      <Menu pointing secondary>
+        <Menu.Item>
+          <Link to="/">HOME</Link>
+        </Menu.Item>
+        <Menu.Item>
+          <Link to="/blogs">BLOGS</Link>
+        </Menu.Item>
+        <Menu.Menu position="right">{links}</Menu.Menu>
+      </Menu>
+    </div>
+  );
+};
 
 const mapStateToProps = state => ({
   auth: state.firebase.auth

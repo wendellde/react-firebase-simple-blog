@@ -13,7 +13,7 @@ export default createStore(
   rootReducer,
   composeWithDevTools(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-    reactReduxFirebase(firebaseConfig), // redux binding for firebase
+    reactReduxFirebase(firebaseConfig, { attachAuthIsReady: true }), // redux binding for firebase
     reduxFirestore(firebaseConfig) // redux bindings for firestore
   )
 );

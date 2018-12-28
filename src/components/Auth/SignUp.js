@@ -1,5 +1,9 @@
 import React, { Component } from "react";
 import SignUpForm from "./forms/SignUpForm";
+import { Redirect } from "react-router-dom";
+
+import { connect } from "react-redux";
+import { signUp } from "../../redux/actions/authActions";
 
 class SignUp extends Component {
   state = {
@@ -21,11 +25,14 @@ class SignUp extends Component {
   };
 
   submit = event => {
-    console.log(this.state.credentials);
+    this.props.signUp(this.state.credentials);
   };
 
   render() {
     const { credentials } = this.state;
+    const { auth } = this.props;
+
+    if (auth.uid) return <Redirect to="/blogs" />;
 
     return (
       <div>
@@ -40,4 +47,15 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+const mapStateToProps = state => ({
+  auth: state.firebase.auth
+});
+
+const mapDispatchToProps = dispatch => ({
+  signUp: credentials => dispatch(signUp(credentials))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignUp);

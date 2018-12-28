@@ -1,7 +1,8 @@
 import {
   LOGIN_ERROR,
   LOGIN_SUCCESS,
-  SIGNOUT_SUCCESS
+  SIGNOUT_SUCCESS,
+  SIGNUP_SUCCESS
 } from "../actions/actionTypes";
 
 const initState = {
@@ -18,6 +19,12 @@ const authReducer = (state = initState, action) => {
       };
     case LOGIN_SUCCESS:
       console.log("login success");
+      return {
+        ...state,
+        authError: null
+      };
+    case SIGNUP_SUCCESS:
+      console.log("signup success");
       return {
         ...state,
         authError: null
