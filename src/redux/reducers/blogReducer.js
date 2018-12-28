@@ -1,3 +1,5 @@
+import { CREATE_POST_ERROR, CREATE_POST_SUCCESS } from "../actions/actionTypes";
+
 /**
  * @description   Initial State
  */
@@ -25,6 +27,12 @@ const initialState = {
  */
 export default (state = initialState, action) => {
   switch (action.type) {
+    case CREATE_POST_SUCCESS:
+      console.log("New Blog Post Created");
+      return state;
+    case CREATE_POST_ERROR:
+      console.log("Error Posting Blog");
+      return state;
     default:
       return state;
   }
