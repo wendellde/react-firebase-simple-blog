@@ -27,6 +27,9 @@ class CreateBlog extends Component {
 
     // TODO: clean your data, Please validate!
     this.props.createPost(this.state.postData);
+
+    // TODO: Redirect
+    this.props.history.push("/blogs");
   };
 
   render() {
