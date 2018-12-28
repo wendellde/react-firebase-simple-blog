@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="">
+        <div className="ui container">
           <h1>App</h1>
           <hr />
           <Route exact path="/blogs" component={Blogs} />

@@ -1,3 +1,6 @@
+/**
+ * @description   Initial State
+ */
 const initialState = {
   blogPosts: [
     {
@@ -15,6 +18,11 @@ const initialState = {
   ]
 };
 
+/**
+ * @description   Blog Reducer
+ * @param {state}
+ * @param {action}
+ */
 export default (state = initialState, action) => {
   switch (action.type) {
     default:
