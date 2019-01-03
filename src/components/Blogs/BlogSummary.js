@@ -1,15 +1,19 @@
 import React from "react";
-import { Container, Header } from "semantic-ui-react";
+import { Card } from "semantic-ui-react";
 import moment from "moment";
 
-export default ({
-  blog: { title, body, authorFirstName, authorLastName, createdAt }
-}) => (
-  <Container fluid style={{ marginBottom: 20 }}>
-    <Header as="h3">{title}</Header>
-    <p>{body}</p>
-    <small>{`By ${authorFirstName} ${authorLastName} on ${moment(
-      createdAt.toDate()
-    ).format("MMMM Do YYYY, h:mm:ss a")}`}</small>
-  </Container>
+export default ({ blog: { title, body, createdAt } }) => (
+  <div style={{ marginBottom: 20 }}>
+    <Card fluid>
+      <Card.Content>
+        <Card.Header>{title}</Card.Header>{" "}
+        <Card.Description>{body}</Card.Description>
+      </Card.Content>
+      <Card.Content extra>
+        <small>{`Posted ${moment(createdAt.toDate())
+          .startOf("hour")
+          .fromNow()}`}</small>
+      </Card.Content>
+    </Card>
+  </div>
 );
