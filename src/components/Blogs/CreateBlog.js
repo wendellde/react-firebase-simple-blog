@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import CreateBlogForm from "./forms/CreateBlogForm";
 import { createPost } from "../../redux/actions/blogActions";
 import { connect } from "react-redux";
+import { Redirect } from "react-router-dom";
 
 class CreateBlog extends Component {
   state = {
@@ -34,6 +35,9 @@ class CreateBlog extends Component {
 
   render() {
     const { postData } = this.state;
+    const { uid } = this.props.auth;
+
+    if (!uid) return <Redirect to="/signin" />;
 
     return (
       <div>
@@ -52,11 +56,15 @@ CreateBlog.propTypes = {
   createPost: PropTypes.func.isRequired
 };
 
+const mapStateToProps = state => ({
+  auth: state.firebase.auth
+});
+
 const mapDispatchToProps = dispatch => ({
   createPost: postData => dispatch(createPost(postData))
 });
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(CreateBlog);

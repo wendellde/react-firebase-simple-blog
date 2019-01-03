@@ -1,7 +1,7 @@
 import React from "react";
-import { Form, Button } from "semantic-ui-react";
+import { Form, Button, Message } from "semantic-ui-react";
 
-const SignInForm = ({ credentials, onSubmit, onChange }) => {
+const SignInForm = ({ credentials, onSubmit, onChange, authError }) => {
   return (
     <Form
       onSubmit={event => {
@@ -29,6 +29,11 @@ const SignInForm = ({ credentials, onSubmit, onChange }) => {
           value={credentials.password}
         />
       </Form.Field>
+      {authError ? (
+        <Message negative>
+          <Message.Header>{authError}</Message.Header>
+        </Message>
+      ) : null}
       <Button primary>Login</Button>
     </Form>
   );
